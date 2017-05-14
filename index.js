@@ -21,13 +21,14 @@ module.exports = function UnlimitedFlight(dispatch) {
 		if(event.target.toUpperCase() === "!unlimitedflight".toUpperCase()) {
 			if (/^<FONT>on?<\/FONT>$/i.test(event.message)) { 
 				enabled = true
-				message('Unlimited Flight <font color="#00EE00">enabled</font>.')
+				message('Unlimited Flight <font color="#56B4E9">enabled</font>.')
 			}
 			else if (/^<FONT>off?<\/FONT>$/i.test(event.message)) {
 				enabled = false
-				message('Unlimited Flight <font color="#DC143C">disabled</font>.')
+				message('Unlimited Flight <font color="#E69F00">disabled</font>.')
 			}
-			else message('Commands: "on" (enable Unlimited Flight),'
+			else message('Commands:<br>'
+								+ ' "on" (enable Unlimited Flight),<br>'
 								+ ' "off" (disable Unlimited Flight)'
 						)
 			return false
@@ -45,4 +46,20 @@ module.exports = function UnlimitedFlight(dispatch) {
 			message: msg
 		})
 	}
+	
+	dispatch.hook('C_CHAT', 1, event => {
+		if(/^<FONT>!fly<\/FONT>$/i.test(event.message)) {
+			if(!enabled) {
+				enabled = true
+				message('Unlimited Flight <font color="#56B4E9">enabled</font>.')
+				console.log('Unlimited Flight enabled.')
+			}
+			else {
+				enabled = false
+				message('Unlimited Flight <font color="#E69F00">disabled</font>.')
+				console.log('Unlimited Flight disabled.')
+			}
+			return false
+		}
+	})
 }
