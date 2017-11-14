@@ -1,3 +1,6 @@
+## :heavy_exclamation_mark: Discontinued :heavy_exclamation_mark:
+Support for this module has been discontinued.  
+
 # UnlimitedFlight 
 A tera-proxy module that lets you fly endlessly.  
   
